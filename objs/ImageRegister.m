@@ -5,6 +5,7 @@ classdef ImageRegister
     properties (Access = private)
         img_path
         img
+        org_img
     end
     
     methods
@@ -13,6 +14,7 @@ classdef ImageRegister
             %   Detailed explanation goes here
             obj.img_path = img_path;
             obj.img = ImageClass(img_path);
+            obj.org_img = ImageClass(img_path);
         end
         
         function p_ = getpath(obj)
@@ -21,6 +23,14 @@ classdef ImageRegister
 
         function imgobj = getimg(obj)
             imgobj = obj.img;
+        end
+        
+        function reset(obj)
+            copy_object_properties(obj.org_img, obj.img);
+        end
+        
+        function newimg(obj, img)
+            obj.img = ImageClass(img);
         end
     end
 end

@@ -12,6 +12,7 @@ classdef ImageClass
         padded_cs
         padded_minus_1_pow_mtx
         img_uint8
+        size_
     end
     
     
@@ -26,14 +27,16 @@ classdef ImageClass
                img = img_info;
             end
             d_img = double(img);
+            sz_ = size(d_img);
             obj.img_double = d_img;
             obj.img_uint8 = uint8(d_img);
-            obj.minus_1_pow_mtx = minus1_pow_mtx(size(d_img));
+            obj.minus_1_pow_mtx = minus1_pow_mtx(sz_);
             obj.img_spectrum = fft2(d_img .* obj.minus_1_pow_mtx);
+            new_sz = sz_; new_sz(1) = sz_(1) .* 2; new_sz(2) = sz_(2) .* 2;
             [obj.padded_img, obj.padded_rs, obj.padded_cs] = ...
-                padval(d_img, [2, 2, 1] .* size(d_img));
+                padval(d_img, new_sz);
             obj.padded_minus_1_pow_mtx = ... 
-                minus1_pow_mtx([2, 2, 1] .* size(d_img));
+                minus1_pow_mtx(new_sz);
             obj.padded_img_spectrum = ... 
                 fft2(obj.padded_img .* obj.padded_minus_1_pow_mtx);
         end
@@ -48,6 +51,10 @@ classdef ImageClass
         
         function i_spectrum = getspectrum(obj)
            i_spectrum = obj.img_spectrum;
+        end
+        
+        function sz = getsize(obj)
+           sz = size(obj.img_double);
         end
     end
 end
