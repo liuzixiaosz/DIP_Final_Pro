@@ -56,6 +56,13 @@ classdef ImageClass
         function sz = getsize(obj)
            sz = size(obj.img_double);
         end
+        
+        function sz_char = getsize_char(obj)
+           sz = size(obj.img_double);
+           w = sz(1);
+           h = sz(2);
+           sz_char = sprintf('%dx%d', w, h);
+        end
     end
 end
 
