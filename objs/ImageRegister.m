@@ -25,12 +25,12 @@ classdef ImageRegister
             imgobj = obj.img;
         end
         
-        function reset(obj)
-            copy_object_properties(obj.org_img, obj.img);
+        function obj = reset(obj)
+            obj.img = obj.org_img;
         end
         
-        function newimg(obj, img)
-            obj.img = ImageClass(img);
+        function obj = newimg(obj, inimg)
+            obj.img = ImageClass(inimg);
         end
     end
 end
