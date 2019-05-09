@@ -1,11 +1,13 @@
-function outimg = adaptive_median_1d(inimg, win, varargin)
+function outimg = adaptive_median_1d(inimg, varargin)
+    
     global z_xy z_min z_max z_med;
+    win = varargin{1};
     orgwin = win;
     outimg = zeros(size(inimg));
     maxwin = floor(size(outimg) / 10);
-
-    if ~isempty(varargin)
-        maxwin = varargin{1};
+    
+    if length(varargin) > 1
+        maxwin = varargin{2};
     end
 
     for row = 1:size(inimg, 1)
