@@ -35,5 +35,4 @@ function outimg = multiplicative_inv(inimg, varargin)
     outimg = ifft2(F_hat) .* m1;
     outimg = map2_0_255(real(outimg));
     outimg = uint8(outimg);
-    
 end

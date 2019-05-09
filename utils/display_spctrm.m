@@ -1,4 +1,4 @@
-function h = display_spctrm(sp)
+function display_spctrm(sp)
     % DISPLAYRGB
     %   Detailed explanation goes here
 
