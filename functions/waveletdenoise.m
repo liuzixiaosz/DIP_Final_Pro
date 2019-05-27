@@ -7,13 +7,9 @@ function outimg = waveletdenoise(inimg, varargin)
     if ~isempty(varargin)
         p = varargin{1};
     end
-%     
-%     if length(varargin) > 1
-%         n = varargin{1};
-%     end
 
-    nc = wthcoef2('h', c, l, n, p, 's'); %对高频小波系数进行阈值处理
-    outtmp = waverec2(nc, l, 'coif2'); %图像的二维小波重构
+    nc = wthcoef2('h', c, l, n, p, 's');
+    outtmp = waverec2(nc, l, 'coif2');
     outimg = uint8(map2_0_255(outtmp));
 
 end
