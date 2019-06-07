@@ -7,7 +7,7 @@ function outimg = waveletdenoise(inimg, varargin)
     if ~isempty(varargin)
         p = varargin{1};
     end
-
+    
     nc = wthcoef2('h', c, l, n, p, 's');
     outtmp = waverec2(nc, l, 'coif2');
     outimg = uint8(map2_0_255(outtmp));

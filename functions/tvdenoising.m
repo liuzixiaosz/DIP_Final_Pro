@@ -7,24 +7,21 @@ function outimg = tvdenoising(inimg, varargin)
     ep = 1; dt = 0.2; lam = 0; I0 = inimg; C = 0; it = 10;
 
     if length(varargin) > 0
-        ep = varargin{1};
+        dt = varargin{1};
     end
 
     if length(varargin) > 1
-        dt = varargin{2};
+        lam = varargin{2};
     end
 
     if length(varargin) > 2
-        lam = varargin{3};
+        it = varargin{3};
     end
-
     if length(varargin) > 3
         C = varargin{4};
     end
 
-    if length(varargin) > 4
-        it = varargin{5};
-    end
+
 
     [ny, nx, nz] = size(inimg); ep2 = ep^2;
 
